@@ -10,6 +10,7 @@ export class TodoItem {
 export function generateID(): string {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let result = '';
+  let items: TodoItem[];
   let found = true;
 
   while (found) {
@@ -18,12 +19,8 @@ export function generateID(): string {
     }
 
     todoList.subscribe((value) => {
-      value.find(item => {
-          if (item.id == result) {
-            found = true;
-          }
-        }
-      );
+      items = value.filter((item) => item.id == result);
+      found = items.length > 0;
     });
   }
 
@@ -35,17 +32,12 @@ export function generateID(): string {
 // the value isn' empty
 // the todo isn't contained in the todos array (case insensitive)
 export function validateTodo(todo: TodoItem, todos: TodoItem[]): boolean {
-  let found = false
+  let items: TodoItem[];
+  let found= false;
 
-  todos.find(
-    item => {
-      if (item.id == todo.id) {
-        found = true;
-      }
-    }
-  );
-
-  return todo.value.length > 0 && todo.value.length <= 255 && !found;
+  items = todos.filter((item) => item.value.toLowerCase() == todo.value.toLowerCase());
+  found = items.length > 0
+  return todo.value.length > 0 && todo.value.length <= 255 && found;
 }
 
 // capitalize the first letter of the todo
