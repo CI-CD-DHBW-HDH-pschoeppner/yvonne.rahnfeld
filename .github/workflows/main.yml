@@ -21,7 +21,9 @@ jobs:
         run: npm run lint
       - name: Test
         run: npm run test
-      - name: Prettify
+      - name: Prettify 1
+        run: npm run format
+      - name: Prettify 2
         run: npm run format:check
 
   build-and-push-image:
