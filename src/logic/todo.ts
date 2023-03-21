@@ -32,10 +32,9 @@ export function generateID(): string {
 // the value isn' empty
 // the todo isn't contained in the todos array (case insensitive)
 export function validateTodo(todo: TodoItem, todos: TodoItem[]): boolean {
-  let items: TodoItem[];
-  let found= false;
+  let found = false;
 
-  items = todos.filter((item) => item.value.toLowerCase() == todo.value.toLowerCase());
+  const items = todos.filter((item) => item.value.toLowerCase() == todo.value.toLowerCase());
   found = items.length > 0
   return todo.value.length > 0 && todo.value.length <= 255 && found;
 }
