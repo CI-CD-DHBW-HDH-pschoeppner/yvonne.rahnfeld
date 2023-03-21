@@ -1,15 +1,12 @@
-FROM node:18-alpine as build
+FROM node:16 AS build
 
-WORKDIR /home/node
+WORKDIR /app
 
-COPY . /home/node
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+COPY . ./
+RUN npm run build
 
-RUN \
-    npm ci && \
-    npm run build
-
-FROM nginx
-
-COPY --from=build /home/node/dist /usr/share/nginx/html
-
-RUN ls -la /usr/share/nginx/html
+FROM nginx:1.19-alpine
+COPY --from=build /app/dist /usr/share/nginx/html

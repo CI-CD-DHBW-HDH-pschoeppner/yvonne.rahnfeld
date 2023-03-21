@@ -7,6 +7,22 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+          - name: Use Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: "14.x"
+          - name: Install
+            run: npm install
+          - name: Lint
+            run: npm run lint
+          - name: Test
+            run: npm run test
+          - name: Prettify
+            run: npm run format:check
+
   build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
