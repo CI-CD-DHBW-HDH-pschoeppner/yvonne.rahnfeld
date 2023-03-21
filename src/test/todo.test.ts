@@ -2,8 +2,8 @@ import { formatTodo, generateColor, generateID, TodoItem, validateTodo } from '.
 
 describe("generateColor", () => {
   it("generate random Color", () => {
-    const result1: String = generateColor();
-    const result2: String = generateColor();
+    const result1: string = generateColor();
+    const result2: string = generateColor();
     expect(result1).not.toBe(result2);
   });
 });
@@ -34,7 +34,7 @@ describe("formatTodo", () => {
 
 describe("validateTodo", () => {
   it("valid todo", () => {
-    let items: TodoItem[] = [];
+    const items: TodoItem[] = [];
     const todo1: TodoItem = new TodoItem();
     todo1.id = "id333";
     todo1.value = "aBC";
@@ -43,12 +43,12 @@ describe("validateTodo", () => {
     todo2.value = "aBC";
     items.push(todo1);
     items.push(todo2);
-    const result: Boolean = validateTodo(todo1, items);
+    const result: boolean = validateTodo(todo1, items);
     //expect(generateID().length).toBe(5);
     expect(result).toBe(true);
   });
   it("invalid todo", () => {
-    let items: TodoItem[] = [];
+    const items: TodoItem[] = [];
     const todo1: TodoItem = new TodoItem();
     todo1.id = "id333";
     todo1.value = "";
@@ -57,7 +57,7 @@ describe("validateTodo", () => {
     todo2.value = "aBC";
     items.push(todo1);
     items.push(todo2);
-    const result: Boolean = validateTodo(todo1, items);
+    const result: boolean = validateTodo(todo1, items);
     //expect(generateID().length).toBe(5);
     expect(result).toBe(false);
   });
@@ -65,8 +65,8 @@ describe("validateTodo", () => {
 
 describe("generateID", () => {
   it("generate random uniqueID", () => {
-    const result1: String = generateID();
-    const result2: String = generateID();
+    const result1: string = generateID();
+    const result2: string = generateID();
     expect(result1).not.toBe(result2);
   });
 });

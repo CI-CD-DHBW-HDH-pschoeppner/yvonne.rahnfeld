@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { generateColor, todoList, type TodoItem } from "../logic/todo";
+  import { generateColor, todoList, TodoItem } from "../logic/todo";
 
   export let todos: TodoItem[];
   let filteredTodos: TodoItem[];
