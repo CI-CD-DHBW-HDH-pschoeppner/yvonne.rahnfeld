@@ -51,7 +51,7 @@ describe("validateTodo", () => {
     const result: boolean = validateTodo(todo1, items);
     expect(result).toBe(true);
   });
-  it("invalid todo", () => {
+  it("invalid todo, value empty", () => {
     const items: TodoItem[] = [];
     const todo1: TodoItem = new TodoItem();
     todo1.id = "id333";
@@ -59,10 +59,20 @@ describe("validateTodo", () => {
     const todo2: TodoItem = new TodoItem();
     todo2.id = "id666";
     todo2.value = "aBC";
-    items.push(todo1);
     items.push(todo2);
     const result: boolean = validateTodo(todo1, items);
-    //expect(generateID().length).toBe(5);
+    expect(result).toBe(false);
+  });
+  it("invalid todo, already in list", () => {
+    const items: TodoItem[] = [];
+    const todo1: TodoItem = new TodoItem();
+    todo1.id = "id333";
+    todo1.value = "xyz";
+    const todo2: TodoItem = new TodoItem();
+    todo2.id = "id666";
+    todo2.value = "xyz";
+    items.push(todo2);
+    const result: boolean = validateTodo(todo1, items);
     expect(result).toBe(false);
   });
 });
