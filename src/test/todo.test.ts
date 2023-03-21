@@ -1,4 +1,10 @@
-import { formatTodo, generateColor, generateID, TodoItem, validateTodo } from '../logic/todo';
+import {
+  formatTodo,
+  generateColor,
+  generateID,
+  TodoItem,
+  validateTodo,
+} from "../logic/todo";
 
 describe("generateColor", () => {
   it("generate random Color", () => {

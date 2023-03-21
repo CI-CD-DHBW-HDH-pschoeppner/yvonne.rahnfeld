@@ -1,21 +1,23 @@
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 
 export class TodoItem {
-  id = '';
-  value = '';
+  id = "";
+  value = "";
   done = false;
 }
 
 // this function must return a unique ID every time it is called
 export function generateID(): string {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let result = '';
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result = "";
   let items: TodoItem[];
   let found = true;
 
   while (found) {
     for (let i = 0; i < 5; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
     }
 
     todoList.subscribe((value) => {
@@ -34,8 +36,10 @@ export function generateID(): string {
 export function validateTodo(todo: TodoItem, todos: TodoItem[]): boolean {
   let found = false;
 
-  const items = todos.filter((item) => item.value.toLowerCase() == todo.value.toLowerCase());
-  found = items.length > 0
+  const items = todos.filter(
+    (item) => item.value.toLowerCase() == todo.value.toLowerCase()
+  );
+  found = items.length > 0;
   return todo.value.length > 0 && todo.value.length <= 255 && found;
 }
 
@@ -45,7 +49,7 @@ export function formatTodo(todo: TodoItem): TodoItem {
   return {
     id: todo.id,
     value: todo.value[0].toUpperCase(),
-    done: false
+    done: false,
   };
 }
 
@@ -55,7 +59,7 @@ export function generateColor(): string {
   const r = Math.floor(Math.random() * 150) + 50;
   const g = Math.floor(Math.random() * 150) + 50;
   const b = Math.floor(Math.random() * 150) + 50;
-  return '(' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')';
+  return "(" + r.toString() + "," + g.toString() + "," + b.toString() + ")";
 }
 
 export const todoList = writable<TodoItem[]>([]);
