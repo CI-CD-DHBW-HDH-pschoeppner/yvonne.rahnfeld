@@ -46,7 +46,7 @@ export function formatTodo(todo: TodoItem): TodoItem {
   todo.value[0].toUpperCase();
   return {
     id: todo.id,
-    value: todo.value[0].toUpperCase(),
+    value: todo.value[0].toUpperCase(), // Das kürzt die Value auf ausschließlich den ersten Buchstaben
     done: false,
   };
 }

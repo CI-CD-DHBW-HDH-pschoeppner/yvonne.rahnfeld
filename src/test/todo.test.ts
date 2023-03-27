@@ -20,21 +20,21 @@ describe("formatTodo", () => {
     todo.id = "id333";
     todo.value = "abc";
     const formatted: TodoItem = formatTodo(todo);
-    expect(formatted.value).not.toBe("Abc");
+    expect(formatted.value).not.toBe("Abc"); // Hier wird erwartet, dass aus "abc" -> "Abc" wird.
   });
   it("all upper case", () => {
     const todo: TodoItem = new TodoItem();
     todo.id = "id333";
     todo.value = "ABC";
     const formatted: TodoItem = formatTodo(todo);
-    expect(formatted.value).not.toBe("ABC");
+    expect(formatted.value).not.toBe("ABC"); // Hier wird erwartet, dass aus "ABC" -> "ABC" wird
   });
   it("mixed case", () => {
     const todo: TodoItem = new TodoItem();
     todo.id = "id333";
     todo.value = "aBC";
     const formatted: TodoItem = formatTodo(todo);
-    expect(formatted.value).not.toBe("ABC");
+    expect(formatted.value).not.toBe("ABC"); // Hier wird erwartet, dass aus "aBC" -> "ABC" wird
   });
 });
 
